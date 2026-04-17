@@ -15,14 +15,14 @@ interface ExecuteResult {
 async function ensureDependencies(): Promise<boolean> {
   return new Promise((resolve) => {
     // 先检查numpy是否已安装
-    const checkProcess = spawn('python3', ['-c', 'import numpy; import pandas; import matplotlib; print("OK")']);
+    const checkProcess = spawn('python3', ['-c', 'import numpy; import pandas; import matplotlib; import scipy; import seaborn; print("OK")']);
     
     checkProcess.on('close', (code) => {
       if (code === 0) {
         resolve(true);
       } else {
-        // 安装必要的库
-        const installProcess = spawn('pip3', ['install', '-q', 'numpy', 'pandas', 'matplotlib', 'scipy', 'scikit-learn']);
+        // 安装必要的库（包括seaborn）
+        const installProcess = spawn('pip3', ['install', '-q', 'numpy', 'pandas', 'matplotlib', 'scipy', 'seaborn']);
         installProcess.on('close', (installCode) => {
           resolve(installCode === 0);
         });

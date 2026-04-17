@@ -3,13 +3,14 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { BookOpen, Code, CheckCircle, Home, Sparkles } from 'lucide-react';
+import { BookOpen, Code, CheckCircle, Home, Sparkles, MessageSquare } from 'lucide-react';
 
 const navItems = [
   { href: '/', label: '首页', icon: Home },
   { href: '/learn', label: '学习路线', icon: BookOpen },
   { href: '/playground', label: '在线代码', icon: Code },
   { href: '/checkin', label: '我的打卡', icon: CheckCircle },
+  { href: '/messages', label: '留言板', icon: MessageSquare },
 ];
 
 export default function Navbar() {
